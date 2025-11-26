@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "01ce388f-7bbe-4e84-808d-ceb8ec12ec54",
+		"name": "TAXI Backend Test",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45084676",
+		"_collection_link": "https://glebzozulin.postman.co/workspace/Gleb-Zozulin's-Workspace~19a31436-dc01-438e-8237-0d1cbe9b50c2/collection/45084676-01ce388f-7bbe-4e84-808d-ceb8ec12ec54?action=share&source=collection_link&creator=45084676"
+	},
+	"item": [
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"passenger_id\": \"1256\",\r\n    \"address_from\": \"ул. Льва Толстого, 16\",\r\n    \"address_to\": \"Московский вокзал\",\r\n    \"tariff\": \"comfort\",\r\n    \"selected_services\": [\"pet\", \"luggage_rack\", \"english\"],\r\n    \"comment\": \"Встретить у главного входа\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order/*insert_ID_here*",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"*insert_ID_here*"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"driver_id\": \"Michael Petrov\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order/*insert_ID_here*/accept",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"*insert_ID_here*",
+						"accept"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Driver Arrived",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/order/*insert_ID_here*/arrived",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"*insert_ID_here*",
+						"arrived"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Trip",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"status\": \"in_progress\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order/*insert_ID_here*/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"*insert_ID_here*",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "End Trip",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"status\": \"completed\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order/*insert_ID_here*/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"*insert_ID_here*",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Driver Status",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Driver-ID",
+						"value": "driver_superman_001",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"is_available\": true,\r\n    \"current_location\": {\r\n        \"lat\": 55.75,\r\n        \"lng\": 37.61\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/driver/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"driver",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
